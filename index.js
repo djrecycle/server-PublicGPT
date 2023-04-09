@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 
 // Configure open api
 const configuration = new Configuration({
-    organization: "PASTE YOUR ORGANIZATION ID HERE",
+    // organization: "PASTE YOUR ORGANIZATION ID HERE",
     apiKey: process.env.API_KEY // VISIT .env AND MAKE CHANGES
 })
 const openai = new OpenAIApi(configuration)
@@ -38,8 +38,8 @@ app.post('/', async (req, res)=>{
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `${message}`,
-            max_tokens: 100,
-            temperature: .5
+            max_tokens: 1000,
+            temperature: 0.5
         })
         res.json({message: response.data.choices[0].text})
 
